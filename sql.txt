@@ -1,0 +1,154 @@
+-- phpMyAdmin SQL Dump
+-- version 2.6.1
+-- http://www.phpmyadmin.net
+-- 
+-- Serveur: localhost
+-- Généré le : Mercredi 17 Octobre 2007 à 01:06
+-- Version du serveur: 4.1.9
+-- Version de PHP: 4.3.10
+-- 
+-- Base de données: `toeic`
+-- 
+CREATE DATABASE `toeic` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE toeic;
+
+-- --------------------------------------------------------
+
+-- 
+-- Structure de la table `corrige`
+-- 
+
+CREATE TABLE `corrige` (
+  `id_quest` int(3) NOT NULL default '0',
+  `id_rep` int(4) NOT NULL default '0',
+  `id_type_Exo` int(2) NOT NULL default '0'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- 
+-- Contenu de la table `corrige`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Structure de la table `feuille_reponse`
+-- 
+
+CREATE TABLE `feuille_reponse` (
+  `id_user` int(2) NOT NULL default '0',
+  `id_type_Exo` int(2) NOT NULL default '0',
+  `id_quest` int(3) NOT NULL default '0',
+  `id_rep` int(4) NOT NULL default '0',
+  `date_F_Rep` date NOT NULL default '0000-00-00'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- 
+-- Contenu de la table `feuille_reponse`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Structure de la table `question`
+-- 
+
+CREATE TABLE `question` (
+  `id_question` int(3) NOT NULL auto_increment,
+  `nom_question` varchar(250) NOT NULL default '',
+  PRIMARY KEY  (`id_question`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+-- 
+-- Contenu de la table `question`
+-- 
+
+INSERT INTO `question` VALUES (1, 'She''s ... university teacher.');
+INSERT INTO `question` VALUES (2, 'I like ... small animals.');
+INSERT INTO `question` VALUES (3, 'Is this coat ... ?');
+INSERT INTO `question` VALUES (4, 'Is Diana ... ?');
+
+-- --------------------------------------------------------
+
+-- 
+-- Structure de la table `reponse`
+-- 
+
+CREATE TABLE `reponse` (
+  `id_reponse` int(4) NOT NULL auto_increment,
+  `repA` varchar(50) NOT NULL default '',
+  `repB` varchar(50) NOT NULL default '',
+  `repC` varchar(50) default NULL,
+  `repD` varchar(50) default NULL,
+  PRIMARY KEY  (`id_reponse`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+-- 
+-- Contenu de la table `reponse`
+-- 
+
+INSERT INTO `reponse` VALUES (1, 'a', 'an', 'the', 'one');
+INSERT INTO `reponse` VALUES (2, 'the', '_(nothing)', 'every', 'all');
+INSERT INTO `reponse` VALUES (3, 'yours', 'your', 'the yours', NULL);
+INSERT INTO `reponse` VALUES (4, 'a friend of yours', 'a your friend', 'your friend', NULL);
+
+-- --------------------------------------------------------
+
+-- 
+-- Structure de la table `resultats`
+-- 
+
+CREATE TABLE `resultats` (
+  `id_resultat` int(4) NOT NULL auto_increment,
+  `id_user` int(2) NOT NULL default '0',
+  `id_type` int(2) NOT NULL default '0',
+  `tx_reussite` float NOT NULL default '0',
+  `date_resulat` date NOT NULL default '0000-00-00',
+  PRIMARY KEY  (`id_resultat`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Contenu de la table `resultats`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Structure de la table `type_exo`
+-- 
+
+CREATE TABLE `type_exo` (
+  `id_type_Exo` int(2) NOT NULL auto_increment,
+  `nom_Type_Exo` varchar(30) NOT NULL default '',
+  PRIMARY KEY  (`id_type_Exo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+-- 
+-- Contenu de la table `type_exo`
+-- 
+
+INSERT INTO `type_exo` VALUES (1, 'Partie Grammaire');
+
+-- --------------------------------------------------------
+
+-- 
+-- Structure de la table `user`
+-- 
+
+CREATE TABLE `user` (
+  `id_user` int(2) NOT NULL auto_increment,
+  `login_user` varchar(20) NOT NULL default '',
+  `mdp_user` varchar(20) NOT NULL default '',
+  `nom_user` varchar(30) NOT NULL default '',
+  `prenom_user` varchar(30) NOT NULL default '',
+  PRIMARY KEY  (`id_user`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+-- 
+-- Contenu de la table `user`
+-- 
+
+INSERT INTO `user` VALUES (1, 'Frederic', 'TOEIC', 'DA SILVA', 'Frederic');
+        
